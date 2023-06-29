@@ -17,13 +17,13 @@ task clean(type: Delete) {
 }
 
 wrapper {
-    gradleVersion '5.4.1'
+    gradleVersion '7.5.1'
     distributionType 'all'
 }
 
 ext {
 
-    ANNOTATIONS = 'org.jetbrains:annotations-java5:17.0.0'
+    ANNOTATIONS = 'org.jetbrains:annotations:21.0.1'
 
     IX_JAVA = 'com.github.akarnokd:ixjava:1.0.0'
     COMMONS_IO = 'commons-io:commons-io:2.6'

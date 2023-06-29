@@ -22,6 +22,11 @@ repositories {
 
 apply plugin: 'java-library'
 
+lib_groupId = "io.noties.markwon"
+lib_artifact = "prism4j-language"
+lib_version = "2.0.0"
+apply from:rootProject.file("publish.gradle")
+
 sourceSets {
     main.java.srcDirs += '../languages'
     test.java.srcDirs += './build/src-gen/'
@@ -32,11 +37,11 @@ dependencies {
     // I think I'm going crazy with this... but there is some magic underneath and we cannot (_sometimes_ we can!)
     // use local projects... so, these artifacts must be push to local maven first
 
-//    implementation project(':prism4j')
-    implementation "io.noties:prism4j:2.0.0-SNAPSHOT"
+    implementation project(':prism4j')
+//    implementation "io.noties:prism4j:2.0.0-SNAPSHOT"
 
-//    testAnnotationProcessor project(':prism4j-bundler')
-    testAnnotationProcessor "io.noties:prism4j-bundler:2.0.0-SNAPSHOT"
+    testAnnotationProcessor project(':prism4j-bundler')
+//    testAnnotationProcessor "io.noties:prism4j-bundler:2.0.0-SNAPSHOT"
     
     testImplementation JUNIT
     testImplementation COMMONS_IO
@@ -45,8 +50,8 @@ dependencies {
     testImplementation JSON_UNIT
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_7
-targetCompatibility = JavaVersion.VERSION_1_7
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 afterEvaluate {
 
