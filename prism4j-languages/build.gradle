@@ -22,7 +22,7 @@ repositories {
 
 apply plugin: 'java-library'
 
-lib_groupId = "io.noties.markwon"
+lib_groupId = "io.noties.cus"
 lib_artifact = "prism4j-language"
 lib_version = "2.0.0"
 apply from:rootProject.file("publish.gradle")
@@ -38,10 +38,10 @@ dependencies {
     // use local projects... so, these artifacts must be push to local maven first
 
     implementation project(':prism4j')
-//    implementation "io.noties:prism4j:2.0.0-SNAPSHOT"
+//    implementation "io.noties.cus:prism4j:2.0.0"
 
     testAnnotationProcessor project(':prism4j-bundler')
-//    testAnnotationProcessor "io.noties:prism4j-bundler:2.0.0-SNAPSHOT"
+//    testAnnotationProcessor "io.noties.cus:prism4j-bundler:2.0.0"
     
     testImplementation JUNIT
     testImplementation COMMONS_IO

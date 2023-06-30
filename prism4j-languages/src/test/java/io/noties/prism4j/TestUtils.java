@@ -2,9 +2,9 @@ package io.noties.prism4j;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.sun.istack.internal.NotNull;
 
 import org.apache.commons.io.IOUtils;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.io.InputStream;

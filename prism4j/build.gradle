@@ -1,6 +1,6 @@
 apply plugin: 'java-library'
 
-lib_groupId = "io.noties.markwon"
+lib_groupId = "io.noties.cus"
 lib_artifact = "prism4j"
 lib_version = "2.0.0"
 apply from:rootProject.file("publish.gradle")

@@ -1,5 +1,23 @@
 apply plugin: 'maven-publish'
+task javadocs(type: Javadoc) {
+    source = sourceSets.main.java.srcDirs
+    classpath += project.files()
+    failOnError = false
+}
+task javadocJar(type: Jar, dependsOn: javadocs) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
 
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
 afterEvaluate {
     publishing {
         publications {

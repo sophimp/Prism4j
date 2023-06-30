@@ -16,7 +16,35 @@ buildscript {
 
 apply plugin: 'java-library'
 
-lib_groupId = "io.noties.markwon"
+// 配置 processResources 任务，将资源文件复制到 build 目录下
+processResources {
+//    // 指定资源文件的源目录
+//    from 'src/main/resources'
+//    // 指定资源文件的输出目录
+//    into 'build/resources/main'
+
+    doLast {
+        File resourcesTxt = file('src/main/resources/languages')
+        if (resourcesTxt.exists()) {
+            File target = file("build/resources/main/languages")
+            if (target.exists()) {
+                target.delete()
+                copy {
+                    from '../languages/io/noties/prism4j'
+                    into 'build/resources/main/'
+                }
+            }
+        }
+    }
+}
+
+// 配置 jar 任务，将编译后的源代码和资源文件打包为 JAR 文件
+jar {
+    // 将编译后的源代码和资源文件打包到 JAR 文件中
+    from 'build/classes/java/main'
+    from 'build/resources/main'
+}
+lib_groupId = "io.noties.cus"
 lib_artifact = "prism4j-bundler"
 lib_version = "2.0.0"
 apply from:rootProject.file("publish.gradle")
@@ -27,6 +55,7 @@ sourceSets {
     main.java.srcDirs += '../annotations'
 //    main.resources.srcDirs += 'src/main/resources'
 }
+
 
 dependencies {
     implementation ANNOTATIONS
